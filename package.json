@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha",
     "build": "webpack",
-    "dev-web": "webpack-dev-server",
+    "dev": "webpack-dev-server | node src/server.js",
     "dev-node": "src/server.js",
     "start": "node src/server.js"
   },

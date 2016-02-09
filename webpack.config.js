@@ -40,7 +40,7 @@ const common = {
 };
 
 //Target Represents the same name in
-if (TARGET === 'dev-web' || !TARGET) {
+if (TARGET === 'dev' || !TARGET) {
     module.exports = merge(common, {
         devtool: 'eval-source-map',
         devServer: {
@@ -51,7 +51,13 @@ if (TARGET === 'dev-web' || !TARGET) {
             progress: true,
             stats: 'errors-only',
             host: process.env.HOST,
-            port: process.env.PORT
+            port: process.env.PORT,
+            proxy: {
+                'api/*': {
+                    target: 'http://localhost:5000/',
+                    secure: false
+                }
+            }
         },
         plugins: [
             new webpack.HotModuleReplacementPlugin()
